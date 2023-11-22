@@ -102,37 +102,4 @@ public class TareasEntity {
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         return result;
     }
-
-    public void vencer() {
-        // Lógica para marcar la tarea como vencida
-        // Puedes actualizar el estado o realizar otras acciones necesarias
-    }
-
-    public void finalizar() {
-        // Lógica para marcar la tarea como finalizada
-        // Puedes actualizar el estado o realizar otras acciones necesarias
-    }
-
-    public void enviarRecordatorio() {
-        // Lógica para enviar un recordatorio (puede ser un correo electrónico, notificación, etc.)
-    }
-
-    public void modificar(String nuevoNombre, String nuevaDescripcion, Date nuevaFecha, Object nuevaHora, String nuevoEstado) {
-        // Lógica para modificar los atributos de la tarea
-        if (nuevoNombre != null) {
-            this.nombre = nuevoNombre;
-        }
-        if (nuevaDescripcion != null) {
-            this.descripcion = nuevaDescripcion;
-        }
-        if (nuevaFecha != null) {
-            this.fecha = nuevaFecha;
-        }
-        if (nuevaHora != null) {
-            this.hora = nuevaHora;
-        }
-        if (nuevoEstado != null) {
-            this.estado = nuevoEstado;
-        }
-    }
 }
