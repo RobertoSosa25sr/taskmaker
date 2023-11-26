@@ -3,28 +3,29 @@ package modelo;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.sql.Time;
 
 @Entity
-@Table(name = "TAREAS", schema = "dbo", catalog = "TASKMAKER")
+@Table(name = "tareas", schema = "taskmaker")
 public class TareasEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     private int id;
     @Basic
-    @Column(name = "NOMBRE")
+    @Column(name = "nombre")
     private String nombre;
     @Basic
-    @Column(name = "DESCRIPCION")
-    private String descripcion;
-    @Basic
-    @Column(name = "FECHA")
+    @Column(name = "fecha")
     private Date fecha;
     @Basic
-    @Column(name = "HORA")
-    private Object hora;
+    @Column(name = "hora")
+    private Time hora;
     @Basic
-    @Column(name = "ESTADO")
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Basic
+    @Column(name = "estado")
     private String estado;
 
     public int getId() {
@@ -43,14 +44,6 @@ public class TareasEntity {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public Date getFecha() {
         return fecha;
     }
@@ -59,12 +52,20 @@ public class TareasEntity {
         this.fecha = fecha;
     }
 
-    public Object getHora() {
+    public Time getHora() {
         return hora;
     }
 
-    public void setHora(Object hora) {
+    public void setHora(Time hora) {
         this.hora = hora;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getEstado() {
@@ -84,9 +85,9 @@ public class TareasEntity {
 
         if (id != that.id) return false;
         if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
-        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (fecha != null ? !fecha.equals(that.fecha) : that.fecha != null) return false;
         if (hora != null ? !hora.equals(that.hora) : that.hora != null) return false;
+        if (descripcion != null ? !descripcion.equals(that.descripcion) : that.descripcion != null) return false;
         if (estado != null ? !estado.equals(that.estado) : that.estado != null) return false;
 
         return true;
@@ -96,10 +97,26 @@ public class TareasEntity {
     public int hashCode() {
         int result = id;
         result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (fecha != null ? fecha.hashCode() : 0);
         result = 31 * result + (hora != null ? hora.hashCode() : 0);
+        result = 31 * result + (descripcion != null ? descripcion.hashCode() : 0);
         result = 31 * result + (estado != null ? estado.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return(this.id + "\n" +
+                this.nombre + "\n" +
+                this.descripcion + "\n" +
+                this.estado + "\n" +
+                this.hora + "\n" +
+                this.fecha);
+    }
+
+    public TareasEntity getFromDatabase() {
+        return null;
+    }
+
+
 }
